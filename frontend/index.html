@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="sample">
+    <head>
+       <title> Multiplcation </title>
+       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+       <script src='./app/controllers/app.controller.js'></script>
+       <link href="./style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="mainContainer" ng-controller="FormController" ng-init="init()">
+            <h1>Multiplication</h1>
+        <form class="formContainer" ng-submit="handleMultiplication()" name="form1">
+            <div>
+            <input type="number" id="first" name="first" ng-model="first" form-validator/>
+            <div class="error" ng-show="!form1.first.$pristine &&form1.first.$invalid">
+                The Minimum value should me greater than 0.
+            </div>
+            <div class="normal" ng-show="!form1.first.$pristine &&form1.first.$valid">
+                The value is valid.
+            </div>
+            <div>
+                <input type="number" id="second" name="second" ng-model="second" form-validator/>
+                <div class="error" ng-show="!form1.second.$pristine &&form1.second.$invalid">
+                    The Minimum value should me greater than 0.
+                </div>
+                <div class="normal" ng-show="!form1.second.$pristine &&form1.second.$valid">
+                    The value is valid.
+                </div>
+            </div>
+            <input type="submit" value="Submit" class="btn-primary" ng-disabled="form1.first.$invalid||form1.second.$invalid"/>
+        </form>
+        <div ng-if="result>=0">Your result is {{result}}</div>
+        </div>
+    </body>
+</html>
